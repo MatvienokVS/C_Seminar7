@@ -7,9 +7,6 @@
 using static System.Console;
 Clear();
 
-
-
-
 int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
 {
     int[,] Array = new int[rows, columns];
@@ -22,4 +19,17 @@ int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
         }
     }
     return Array;
+}
+
+void PrintDDArray(int[,] inArrai)
+{
+    for (int i = 0; i < inArrai.GetLength(0); i++)
+    {
+        for (int j = 0; j < inArrai.GetLength(1); j++)
+        {
+            Write($"{inArrai[i, j]},5");
+        }
+        WriteLine();
+     }
+
 }
