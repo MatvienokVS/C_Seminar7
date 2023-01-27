@@ -7,6 +7,8 @@
 using static System.Console;
 Clear();
 
+
+
 int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
 {
     int[,] Array = new int[rows, columns];
