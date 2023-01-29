@@ -45,7 +45,7 @@ void PrintDDArray(int[,] inArrai)
 
 }
 
-int AverageNumber(int[,] inArray)
+double AverageNumber(int[,] inArray)
 {
 	double summ = 0;									// Сумма элементов по столбцам
 	
@@ -55,7 +55,7 @@ int AverageNumber(int[,] inArray)
 	{
 		for (int j = 0; j < inArray.GetLength(0); j++)	// Проходим по строке
 		{
-			summ += inArray[i, j];						// Ссумаруем элементы в столбце
+			summ += inArray[i, j];						// Сумируем элементы в столбце
 			array2 = summ / inArray.GetLength(0);		// Вычисляем среднее арифметическое
 		}
 	}	
