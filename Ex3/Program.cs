@@ -10,9 +10,6 @@ Write("Введите параметры массива и искомое зна
 
 int[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
 
-Write("Введите искомое значение: ");
-int.TryParse(ReadLine()!, out int searchnum);
-
 int[,] array = GetDDArray(ints[0], ints[1], ints[2], ints[3]);
 
 PrintDDArray(array);
@@ -47,17 +44,18 @@ void PrintDDArray(int[,] inArrai)
 
 double AverageNumber(int[,] inArray)
 {
-	double summ = 0;									// Сумма элементов по столбцам
-	
-	double[] array2 = new double[inArray.Length];		// Cоздаём одномерный массив для записи среднего арифметического по столбцам.
+	int summ = 0;												// Сумма элементов по столбцам
+	double average = 0;
 
-	for (int i = 0; i < inArray.GetLength(1); i++)		//Проходим по столбцу
+	/*double[] array2 = new double[inArray.GetLength(1)]*/;		// Cоздаём одномерный массив для записи среднего арифметического по столбцам.
+
+	for (int i = 0; i < inArray.GetLength(1); i++)				//Проходим по столбцу
 	{
-		for (int j = 0; j < inArray.GetLength(0); j++)	// Проходим по строке
+		for (int j = 0; j < inArray.GetLength(0); j++)			// Проходим по строке
 		{
-			summ += inArray[i, j];						// Сумируем элементы в столбце
-			array2 = summ / inArray.GetLength(0);		// Вычисляем среднее арифметическое
+			summ += inArray[j, i];								// Сумируем элементы в столбце
+			average = summ / inArray.GetLength(0);				// Вычисляем среднее арифметическое
 		}
-	}	
-	return array2;										// Возвращаем обномерный массив
+	}		
+	return average;												// Возвращаем обномерный массив
 }
