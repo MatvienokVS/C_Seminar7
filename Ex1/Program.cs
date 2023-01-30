@@ -7,6 +7,13 @@
 using static System.Console;
 Clear();
 
+Write("Введите параметры массива: ");
+
+int[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
+
+int[,] array = GetDDArray(ints[0], ints[1], ints[2], ints[3]);
+PrintDDArray(array);
+
 
 
 int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
@@ -29,7 +36,7 @@ void PrintDDArray(int[,] inArrai)
     {
         for (int j = 0; j < inArrai.GetLength(1); j++)
         {
-            Write($"{inArrai[i, j]},5");
+            Write($"{inArrai[i, j],5}");
         }
         WriteLine();
      }
