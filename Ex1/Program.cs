@@ -9,14 +9,14 @@ Clear();
 
 Write("Введите параметры массива: ");
 
-string[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), double.Parse);
+int[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
 
 double[,] array = GetDDArray(ints[0], ints[1], ints[2], ints[3]);
 PrintDDArray(array);
 
 
 
-double[,] GetDDArray(int rows, int columns, double minValue, double maxValue)
+double[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
 {
 	double[,] Array = new double[rows, columns];
 	Random rnd = new Random();
@@ -24,7 +24,7 @@ double[,] GetDDArray(int rows, int columns, double minValue, double maxValue)
 	{
 		for (int j = 0; j < columns; j++)
 		{
-			Array[i, j] = rnd.Next(minValue, maxValue + 1);
+			Array[i, j] = rnd.Next(minValue, (maxValue + 1)) + Math.Round(rnd.NextDouble(), 1);
 		}
 	}
 	return Array;
@@ -36,7 +36,7 @@ void PrintDDArray(double[,] inArrai)
 	{
 		for (int j = 0; j < inArrai.GetLength(1); j++)
 		{
-			Write($"{inArrai[i, j],5}");
+			Write($"{inArrai[i, j],7}");
 		}
 		WriteLine();
 	}
