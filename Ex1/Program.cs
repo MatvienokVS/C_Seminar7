@@ -9,36 +9,36 @@ Clear();
 
 Write("Введите параметры массива: ");
 
-int[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
+string[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), double.Parse);
 
-int[,] array = GetDDArray(ints[0], ints[1], ints[2], ints[3]);
+double[,] array = GetDDArray(ints[0], ints[1], ints[2], ints[3]);
 PrintDDArray(array);
 
 
 
-int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
+double[,] GetDDArray(int rows, int columns, double minValue, double maxValue)
 {
-    int[,] Array = new int[rows, columns];
-    Random rnd = new Random();
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            Array[i, j] = rnd.Next(minValue, maxValue+1);
-        }
-    }
-    return Array;
+	double[,] Array = new double[rows, columns];
+	Random rnd = new Random();
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			Array[i, j] = rnd.Next(minValue, maxValue + 1);
+		}
+	}
+	return Array;
 }
 
-void PrintDDArray(int[,] inArrai)
+void PrintDDArray(double[,] inArrai)
 {
-    for (int i = 0; i < inArrai.GetLength(0); i++)
-    {
-        for (int j = 0; j < inArrai.GetLength(1); j++)
-        {
-            Write($"{inArrai[i, j],5}");
-        }
-        WriteLine();
-     }
+	for (int i = 0; i < inArrai.GetLength(0); i++)
+	{
+		for (int j = 0; j < inArrai.GetLength(1); j++)
+		{
+			Write($"{inArrai[i, j],5}");
+		}
+		WriteLine();
+	}
 
 }
