@@ -55,7 +55,7 @@ double[] AverageNumber(int[,] inArray)
 		{
 			average[i] += inArray[j, i];
 		}
-		average[i] /= inArray.GetLength(1);
+		average[i] /= inArray.GetLength(0);
 		//Write($"{average[i] / inArray.GetLength(0),6}");
 	}
 	return average;
