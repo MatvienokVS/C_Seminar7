@@ -24,42 +24,42 @@ SearchNumber(array, searchnum);
 
 int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
 {
-    int[,] Array = new int[rows, columns];
-    Random rnd = new Random();
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            Array[i, j] = rnd.Next(minValue, maxValue + 1);
-        }
-    }
-    return Array;
+	int[,] Array = new int[rows, columns];
+	Random rnd = new Random();
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			Array[i, j] = rnd.Next(minValue, maxValue + 1);
+		}
+	}
+	return Array;
 }
 
 void PrintDDArray(int[,] inArrai)
 {
-    for (int i = 0; i < inArrai.GetLength(0); i++)
-    {
-        for (int j = 0; j < inArrai.GetLength(1); j++)
-        {
-            Write($"{inArrai[i, j],5}");
-        }
-        WriteLine();
-    }
+	for (int i = 0; i < inArrai.GetLength(0); i++)
+	{
+		for (int j = 0; j < inArrai.GetLength(1); j++)
+		{
+			Write($"{inArrai[i, j],5}");
+		}
+		WriteLine();
+	}
 
 }
 
 int SearchNumber(int[,] inArray, int num)
 {
-    for (int i = 0; i < inArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < inArray.GetLength(1); j++)
-        {
-            if (array[i, j] == num)
-                WriteLine($"Элемент с координатами [{i},{j}] равный {inArray[i,j]} совпадает с искомым");
-            else
-                WriteLine($"Элемент [{i},{j}] не совпадает с искомым");
-        }
-    }
-    return num;
+	for (int i = 0; i < inArray.GetLength(0); i++)
+	{
+		for (int j = 0; j < inArray.GetLength(1); j++)
+		{
+			if (array[i, j] == num)
+				WriteLine($"Элемент с координатами [{i},{j}] равный {inArray[i, j]} совпадает с искомым");
+			else
+				WriteLine($"Элемент [{i},{j}] не совпадает с искомым");
+		}
+	}
+	return num;
 }

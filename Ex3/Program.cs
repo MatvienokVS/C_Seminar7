@@ -6,14 +6,17 @@
 //Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 
-Write("Введите параметры массива и искомое значение через пробел: ");
+using static System.Console;
+Clear();
+
+Write("Введите параметры массива: ");
 
 int[] ints = Array.ConvertAll(ReadLine()!.Split(new char[] { ' ', '.', ',', ';', ':' }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
 
 int[,] array = GetDDArray(ints[0], ints[1], ints[2], ints[3]);
 
 PrintDDArray(array);
-AverageNumber(array);
+PrintAverageArray(AverageNumber(array));
 
 int[,] GetDDArray(int rows, int columns, int minValue, int maxValue)
 {
@@ -35,27 +38,40 @@ void PrintDDArray(int[,] inArrai)
 	{
 		for (int j = 0; j < inArrai.GetLength(1); j++)
 		{
-			Write($"{inArrai[i, j],5}");
+			Write($"{inArrai[i, j],4}");
 		}
 		WriteLine();
 	}
 
 }
 
-double AverageNumber(int[,] inArray)
+double[] AverageNumber(int[,] inArray)
 {
-	int summ = 0;												// Сумма элементов по столбцам
-	double average = 0;
+	double[] average = new double[inArray.GetLength(1)];
 
-	/*double[] array2 = new double[inArray.GetLength(1)]*/;		// Cоздаём одномерный массив для записи среднего арифметического по столбцам.
-
-	for (int i = 0; i < inArray.GetLength(1); i++)				//Проходим по столбцу
+	for (int i = 0; i < inArray.GetLength(1); i++)
 	{
-		for (int j = 0; j < inArray.GetLength(0); j++)			// Проходим по строке
+		for (int j = 0; j < inArray.GetLength(0); j++)
 		{
-			summ += inArray[j, i];								// Сумируем элементы в столбце
-			average = summ / inArray.GetLength(0);				// Вычисляем среднее арифметическое
+			average[i] += inArray[j, i];
 		}
-	}		
-	return average;												// Возвращаем обномерный массив
+		average[i] /= inArray.GetLength(1);
+		//Write($"{average[i] / inArray.GetLength(0),6}");
+	}
+	return average;
+}
+
+
+void PrintAverageArray(double[] array)
+{
+	Write("[");
+
+	for (int i = 0; i < array.Length - 1; i++)
+	{
+		Write($"{array[i]}, ");
+	}
+
+	Write($"{array[array.Length - 1]}");
+	Write("]");
+	WriteLine();
 }
